@@ -9,7 +9,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="vendor/js-dos/js-dos.css">
 <style>
 :root{
   --bg:#12101F; --bg2:#1B1830; --card:#221E3B; --line:#352F5C;
@@ -172,7 +171,6 @@ footer p{margin:6px 0;max-width:80ch}
   <div class="ra-player-help" data-i18n="player.help">Klik eerst in het beeld zodat het spel je toetsen ontvangt. Esc verlaat volledig scherm.</div>
 </dialog>
 
-<script src="vendor/js-dos/js-dos.js"></script>
 <script>
 (() => {
 "use strict";
@@ -271,29 +269,40 @@ function renderCatalog(){
 fetch("games.json", { cache: "no-cache" }).then(r => r.json()).then(j => { CATALOG = j; renderCatalog(); }).catch(() => {});
 
 /* ---------- player ---------- */
-const PATH_PREFIX = new URL("vendor/js-dos/emulators/", location.href).href;
 const dlg = document.getElementById("player");
-let dosProps = null;
 function dosboxConf(startDir, startCmd){
   const lines = ["[sdl]","autolock=false","[dosbox]","machine=svga_s3","memsize=16","[cpu]","core=auto","cputype=auto","cycles=auto","[mixer]","rate=44100","[autoexec]","@echo off","mount c .","c:"];
   if (startDir) lines.push("cd \\" + startDir.replace(/\//g, "\\"));
   if (startCmd) lines.push(startCmd); else lines.push("dir /w");
   return lines.join("\n") + "\n";
 }
+let frame = null;
 function play({ title, url, bytes, startDir, startCmd, isBundle }){
   stopDos();
   document.getElementById("player-title").textContent = title;
-  const holder = document.getElementById("screen"); holder.replaceChildren();
-  const mount = el("div"); holder.append(mount);
+  const msg = { type: "run" };
+  const transfer = [];
+  if (url) msg.url = new URL(url, location.href).href;
+  else {
+    const copy = bytes.slice();  // keep the visitor's own file reusable for another run
+    msg.bytes = copy.buffer; transfer.push(copy.buffer);
+    if (!isBundle) msg.conf = dosboxConf(startDir, startCmd);
+  }
+  // A fresh frame per game: js-dos cannot be restarted cleanly on one page.
+  frame = el("iframe", { src: "player.html", title: title, allow: "fullscreen; autoplay; gamepad" });
+  frame.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0;background:#000";
+  const onReady = (e) => {
+    if (e.source !== (frame && frame.contentWindow) || !e.data || e.data.type !== "player-ready") return;
+    window.removeEventListener("message", onReady);
+    frame.contentWindow.postMessage(msg, location.origin, transfer);
+    frame.focus();
+  };
+  window.addEventListener("message", onReady);
+  document.getElementById("screen").append(frame);
   if (!dlg.open) dlg.showModal();
-  const opts = { pathPrefix: PATH_PREFIX, autoStart: true, kiosk: true, noCloud: true, backend: "dosbox", backendLocked: true, theme: "dark" };
-  if (url) opts.url = new URL(url, location.href).href;
-  else if (isBundle) opts.initFs = [bytes];
-  else { opts.initFs = [bytes]; opts.dosboxConf = dosboxConf(startDir, startCmd); }
-  dosProps = Dos(mount, opts);
 }
 function stopDos(){
-  if (dosProps){ try { dosProps.stop(); } catch(e) {} dosProps = null; }
+  if (frame) { frame.remove(); frame = null; }  // removing the frame ends the emulator
   document.getElementById("screen").replaceChildren();
 }
 document.getElementById("btn-close").addEventListener("click", () => dlg.close());
