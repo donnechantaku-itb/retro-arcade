@@ -55,8 +55,8 @@
         "DOOM"
       ],
       "desc": {
-        "nl": "Episode 1, Knee-Deep in the Dead: negen levels op de manen van Mars. Bij het starten wordt eerst het originele installatieprogramma uitgevoerd; dat duurt even.",
-        "en": "Episode 1, Knee-Deep in the Dead: nine levels on the moons of Mars. On start, the original installer runs first; this takes a moment."
+        "nl": "Episode 1, Knee-Deep in the Dead: negen levels op de manen van Mars. Bij het starten wordt eerst het originele installatieprogramma uitgevoerd; dat kan tot een minuut duren.",
+        "en": "Episode 1, Knee-Deep in the Dead: nine levels on the moons of Mars. On start, the original installer runs first; this can take up to a minute."
       },
       "controls": {
         "nl": "Pijltjes bewegen, Ctrl vuren, spatie deuren openen, Shift rennen, Alt zijwaarts, 1–7 wapens, Esc menu.",
@@ -88,8 +88,8 @@
         "WOLF3D"
       ],
       "desc": {
-        "nl": "Episode 1, Escape from Wolfenstein: de grootvader van de 3D-shooter. Bij het starten wordt eerst het originele installatieprogramma uitgevoerd; dat duurt even.",
-        "en": "Episode 1, Escape from Wolfenstein: the grandfather of the 3D shooter. On start, the original installer runs first; this takes a moment."
+        "nl": "Episode 1, Escape from Wolfenstein: de grootvader van de 3D-shooter. Bij het starten wordt eerst het originele installatieprogramma uitgevoerd; dat kan tot een minuut duren.",
+        "en": "Episode 1, Escape from Wolfenstein: the grandfather of the 3D shooter. On start, the original installer runs first; this can take up to a minute."
       },
       "controls": {
         "nl": "Pijltjes bewegen, Ctrl vuren, spatie deuren openen, Shift rennen, Alt zijwaarts, 1–4 wapens, Esc menu.",
@@ -143,8 +143,8 @@
         "KEEN1"
       ],
       "desc": {
-        "nl": "Billy Blaze, alias Commander Keen, moet de onderdelen van zijn raket terugvinden op Mars. Bij het starten wordt eerst het originele installatieprogramma uitgevoerd; dat duurt even.",
-        "en": "Billy Blaze, alias Commander Keen, must recover the parts of his rocket on Mars. On start, the original installer runs first; this takes a moment."
+        "nl": "Billy Blaze, alias Commander Keen, moet de onderdelen van zijn raket terugvinden op Mars. Bij het starten wordt eerst het originele installatieprogramma uitgevoerd; dat kan tot een minuut duren.",
+        "en": "Billy Blaze, alias Commander Keen, must recover the parts of his rocket on Mars. On start, the original installer runs first; this can take up to a minute."
       },
       "controls": {
         "nl": "Pijltjes bewegen, Ctrl springen, Alt pogostick (zodra gevonden), Ctrl+Alt vuren, Esc menu.",
