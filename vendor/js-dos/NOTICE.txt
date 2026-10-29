@@ -1,0 +1,6 @@
+js-dos 8.5.3 — https://github.com/caiiiycuk/js-dos (npm package "js-dos@8.5.3")
+Copyright (c) Alexander Guryanov (caiiiycuk) and contributors.
+Includes DOSBox, Copyright (c) The DOSBox Team.
+Licensed under the GNU General Public License, version 2 — see LICENSE-GPL-2.0.txt.
+Unmodified binaries; corresponding source code: https://github.com/caiiiycuk/js-dos/tree/8.5.3
+and https://github.com/js-dos/emulators.

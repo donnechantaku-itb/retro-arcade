@@ -1,0 +1,37 @@
+{
+  "games": [],
+  "planned": [
+    {
+      "id": "liero",
+      "title": "Liero",
+      "year": 1998,
+      "genre": { "nl": "Actie / duel voor 2 spelers", "en": "Action / 2-player duel" },
+      "maker": "Joosa Riekkinen",
+      "license": { "nl": "Origineel programma en data vrijgegeven onder de WTFPL-licentie", "en": "Original program and data released under the WTFPL licence" }
+    },
+    {
+      "id": "doom",
+      "title": "DOOM (shareware, episode 1)",
+      "year": 1993,
+      "genre": { "nl": "Shooter", "en": "Shooter" },
+      "maker": "id Software",
+      "license": { "nl": "Officiële shareware-episode, vrij te verspreiden", "en": "Official shareware episode, freely distributable" }
+    },
+    {
+      "id": "wolf3d",
+      "title": "Wolfenstein 3D (shareware, episode 1)",
+      "year": 1992,
+      "genre": { "nl": "Shooter", "en": "Shooter" },
+      "maker": "id Software / Apogee",
+      "license": { "nl": "Officiële shareware-episode, vrij te verspreiden", "en": "Official shareware episode, freely distributable" }
+    },
+    {
+      "id": "keen1",
+      "title": "Commander Keen 1: Marooned on Mars",
+      "year": 1990,
+      "genre": { "nl": "Platformspel", "en": "Platformer" },
+      "maker": "id Software / Apogee",
+      "license": { "nl": "Officiële shareware-episode, vrij te verspreiden", "en": "Official shareware episode, freely distributable" }
+    }
+  ]
+}
