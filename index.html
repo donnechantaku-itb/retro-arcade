@@ -246,7 +246,16 @@ function card(g, playable){
   c.append(el("div", { class: "ra-lic" }, t("card.license") + ": " + loc(g.license)));
   if (playable){
     const b = el("button", { class: "ra-btn", type: "button" }, t("card.play"));
-    b.addEventListener("click", () => play({ title: g.title, url: g.bundle }));
+    b.addEventListener("click", async () => {
+      if (g.bundle) return play({ title: g.title, url: g.bundle });
+      // Original archive, served unchanged; DOSBox is configured at runtime.
+      b.disabled = true;
+      try {
+        const r = await fetch(g.zip); if (!r.ok) throw new Error(r.status);
+        const bytes = new Uint8Array(await r.arrayBuffer());
+        play({ title: g.title, bytes, startDir: g.dir || "", startCmd: g.start });
+      } finally { b.disabled = false; }
+    });
     c.append(b);
   }
   return c;

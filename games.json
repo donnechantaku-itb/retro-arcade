@@ -1,37 +1,72 @@
 {
-  "games": [],
-  "planned": [
+  "games": [
     {
       "id": "liero",
       "title": "Liero",
       "year": 1998,
-      "genre": { "nl": "Actie / duel voor 2 spelers", "en": "Action / 2-player duel" },
+      "genre": {
+        "nl": "Actie / duel voor 2 spelers",
+        "en": "Action / 2-player duel"
+      },
       "maker": "Joosa Riekkinen",
-      "license": { "nl": "Origineel programma en data vrijgegeven onder de WTFPL-licentie", "en": "Original program and data released under the WTFPL licence" }
-    },
+      "license": {
+        "nl": "Freeware (Joosa Riekkinen, 1998–1999): vrij te verspreiden zonder wijzigingen. Origineel archief, onveranderd.",
+        "en": "Freeware (Joosa Riekkinen, 1998–1999): free to distribute without changes. Original archive, unmodified."
+      },
+      "zip": "games/liero/liero133.zip",
+      "start": "LIERO.EXE",
+      "desc": {
+        "nl": "Twee wormen, veertig wapens en een ninjatouw. Speel samen op één toetsenbord of tegen de computer.",
+        "en": "Two worms, forty weapons and a ninja rope. Play together on one keyboard or against the computer."
+      },
+      "controls": {
+        "nl": "Speler 1: D/G bewegen, R/F richten, links Ctrl vuren, links Shift wapen, links Alt springen. Speler 2: pijltjes, rechts Ctrl vuren, rechts Alt wapen, rechts Shift springen.",
+        "en": "Player 1: D/G move, R/F aim, left Ctrl fire, left Shift weapon, left Alt jump. Player 2: arrows, right Ctrl fire, right Alt weapon, right Shift jump."
+      }
+    }
+  ],
+  "planned": [
     {
       "id": "doom",
       "title": "DOOM (shareware, episode 1)",
       "year": 1993,
-      "genre": { "nl": "Shooter", "en": "Shooter" },
+      "genre": {
+        "nl": "Shooter",
+        "en": "Shooter"
+      },
       "maker": "id Software",
-      "license": { "nl": "Officiële shareware-episode, vrij te verspreiden", "en": "Official shareware episode, freely distributable" }
+      "license": {
+        "nl": "Officiële shareware-episode, vrij te verspreiden",
+        "en": "Official shareware episode, freely distributable"
+      }
     },
     {
       "id": "wolf3d",
       "title": "Wolfenstein 3D (shareware, episode 1)",
       "year": 1992,
-      "genre": { "nl": "Shooter", "en": "Shooter" },
+      "genre": {
+        "nl": "Shooter",
+        "en": "Shooter"
+      },
       "maker": "id Software / Apogee",
-      "license": { "nl": "Officiële shareware-episode, vrij te verspreiden", "en": "Official shareware episode, freely distributable" }
+      "license": {
+        "nl": "Officiële shareware-episode, vrij te verspreiden",
+        "en": "Official shareware episode, freely distributable"
+      }
     },
     {
       "id": "keen1",
       "title": "Commander Keen 1: Marooned on Mars",
       "year": 1990,
-      "genre": { "nl": "Platformspel", "en": "Platformer" },
+      "genre": {
+        "nl": "Platformspel",
+        "en": "Platformer"
+      },
       "maker": "id Software / Apogee",
-      "license": { "nl": "Officiële shareware-episode, vrij te verspreiden", "en": "Official shareware episode, freely distributable" }
+      "license": {
+        "nl": "Officiële shareware-episode, vrij te verspreiden",
+        "en": "Official shareware episode, freely distributable"
+      }
     }
   ]
 }
