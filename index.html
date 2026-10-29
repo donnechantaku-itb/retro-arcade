@@ -251,7 +251,7 @@ function card(g, playable){
       try {
         const r = await fetch(g.zip); if (!r.ok) throw new Error(r.status);
         const bytes = new Uint8Array(await r.arrayBuffer());
-        play({ title: g.title, bytes, startDir: g.dir || "", startCmd: g.start });
+        play({ title: g.title, bytes, startDir: g.dir || "", startCmd: g.start, autoexec: g.autoexec, keys: g.keys });
       } finally { b.disabled = false; }
     });
     c.append(b);
@@ -270,23 +270,26 @@ fetch("games.json", { cache: "no-cache" }).then(r => r.json()).then(j => { CATAL
 
 /* ---------- player ---------- */
 const dlg = document.getElementById("player");
-function dosboxConf(startDir, startCmd){
+function dosboxConf(startDir, startCmd, autoexec){
   const lines = ["[sdl]","autolock=false","[dosbox]","machine=svga_s3","memsize=16","[cpu]","core=auto","cputype=auto","cycles=auto","[mixer]","rate=44100","[autoexec]","@echo off","mount c .","c:"];
-  if (startDir) lines.push("cd \\" + startDir.replace(/\//g, "\\"));
-  if (startCmd) lines.push(startCmd); else lines.push("dir /w");
+  if (autoexec) lines.push(...autoexec);  // e.g. run the original installer unattended
+  else {
+    if (startDir) lines.push("cd \\" + startDir.replace(/\//g, "\\"));
+    if (startCmd) lines.push(startCmd); else lines.push("dir /w");
+  }
   return lines.join("\n") + "\n";
 }
 let frame = null;
-function play({ title, url, bytes, startDir, startCmd, isBundle }){
+function play({ title, url, bytes, startDir, startCmd, isBundle, autoexec, keys }){
   stopDos();
   document.getElementById("player-title").textContent = title;
-  const msg = { type: "run" };
+  const msg = { type: "run", keys };
   const transfer = [];
   if (url) msg.url = new URL(url, location.href).href;
   else {
     const copy = bytes.slice();  // keep the visitor's own file reusable for another run
     msg.bytes = copy.buffer; transfer.push(copy.buffer);
-    if (!isBundle) msg.conf = dosboxConf(startDir, startCmd);
+    if (!isBundle) msg.conf = dosboxConf(startDir, startCmd, autoexec);
   }
   // A fresh frame per game: js-dos cannot be restarted cleanly on one page.
   frame = el("iframe", { src: "player.html", title: title, allow: "fullscreen; autoplay; gamepad" });

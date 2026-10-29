@@ -31,6 +31,14 @@
       opts.initFs = [new Uint8Array(d.bytes)];
       if (d.conf) opts.dosboxConf = d.conf;
     }
+    // Optional scripted key presses, e.g. to accept an original installer's defaults.
+    if (Array.isArray(d.keys) && d.keys.length) {
+      opts.onEvent = (event, ci) => {
+        if (event !== "ci-ready") return;
+        let t = 0;
+        d.keys.forEach(k => { t += k.wait || 0; setTimeout(() => ci.simulateKeyPress(...[].concat(k.key)), t); });
+      };
+    }
     Dos(document.getElementById("dos"), opts);
     window.focus();
   });
